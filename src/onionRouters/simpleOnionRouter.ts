@@ -73,8 +73,8 @@ onionRouter.post("/message", async (req, res) => {
     if (privateKey !== null) {
       //separate the key from the rest
       const [encryptedSymmetricKey, encryptedLayer1] = [
-        encryptedMessage.slice(0, 256), //length of symmetric key
-        encryptedMessage.slice(256)
+        encryptedMessage.slice(0, 44), //length of symmetric key
+        encryptedMessage.slice(44)
       ];
       
       const decryptedSymmetricKey = await rsaDecrypt(encryptedSymmetricKey, await importPrvKey(privateKey));
